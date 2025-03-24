@@ -1,0 +1,132 @@
+@import '~@customink/design-tokens/build/scss/variables.scss';
+@import '../../respond-to.scss';
+@import '../../global-styles/index.scss';
+
+.ciHeader-navigation {
+  // This CSS is just for SB apps, otherwise the button looks funny due to missing font.
+  .ghf-text-button, .ghf-primary-button, .ghf-secondary-button {
+    font-family: SharpSans, Sharp Sans, Helvetica, Arial, "Trebuchet MS", sans-serif;
+  }
+  .ciHeader-subNav-wrapper {
+    margin-left: -16px;
+  }
+}
+
+.ciHeader-subNav {
+  &-wrapper {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    height: 100%;
+    &:hover {
+      .ciHeader {
+        &-overlay {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &-item {
+    display: flex;
+    align-self: stretch;
+    justify-content: stretch;
+    text-decoration: none;
+    color: $color-gray-slate-default;
+    &:link, &:visited {
+      color: $color-gray-slate-default;
+    }
+    &:hover {
+      .ciHeader-subNav-text {
+        background: $color-header-hover-blue;
+        color: $color-blue-default;
+      }
+    }
+    &:focus {
+      outline: none;
+      .ciHeader-subNav-text {
+        border-radius: 4px;
+        border: 1px solid $color-blue-default;
+      }
+    }
+  }
+
+  &-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: $color-gray-slate-default;
+    &:link, &:visited {
+      color: $color-gray-slate-default;
+    }
+  }
+
+  &-text {
+    display: inline-block;
+    font-size: $typography-button-large-size;
+    line-height: $typography-line-height;
+    padding: 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  // subNav :hover mechanics
+
+  .ciHeader-subNav-panel.ciHeader-subNav-panel--active {
+    display: block;
+  }
+}
+
+
+@include breakpoint('lg') {
+  .ciHeader-subNav {
+    &-panel {
+      display: none;
+      position: absolute;
+      background-color: $color-shade-white;
+      z-index: 930;
+      top: 108px;
+      width: 976px;
+      height: 374px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &-wrapper {
+      display: flex;
+    }
+    &-text {
+      padding: 8px 12px;
+    }
+  }
+  .ciHeader-navigation .ciHeader-subNav-panel {
+    top: 49px;
+  }
+}
+
+@include breakpoint('xl') {
+  .ciHeader-subNav {
+    &-panel {
+      display: none;
+      position: absolute;
+      background-color: $color-shade-white;
+      z-index: 930;
+      top: 108px;
+      width: 1252px;
+      height: 374px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &-wrapper {
+      display: flex;
+    }
+    &-text {
+      padding: 8px 16px;
+    }
+  }
+  .ciHeader-navigation .ciHeader-subNav-panel {
+    top: 49px;
+  }
+}
